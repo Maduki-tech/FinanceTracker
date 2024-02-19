@@ -22,10 +22,10 @@
 - OOP in Java
 - Learning Spring Boot
 
-### Svelte
+### NextJS
 
-- Diagram in Svelte
-- Learning Svelte
+- Diagram in NextJS
+- Learning NextJS
 
 ### Ressources
 
