@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  nextjs-app:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /frontend/
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./frontend/package.json
+          ignore:
+            - node_modules/
+    ports:
+      - "3000:3000"
+
+  spring-app:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+    develop:
+      watch:
+        - action: sync
+          path: ./Backend
+          target: /Backend/
+          ignore:
+            - target/
+        - action: rebuild
+          path: ./Backend
+    ports:
+      - "8080:8080"
+

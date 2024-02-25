@@ -1,6 +1,7 @@
 // TODO: WRITE A TEST FOR THIS PAGE
 import Dropdown from '@/components/fullcomponent/Dropdown'
 import Navigation from '@/components/fullcomponent/Navigation'
+import { Person } from '@/components/fullcomponent/Person'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import InputMoney from '@/components/ui/inputMoney'
@@ -9,7 +10,13 @@ import Head from 'next/head'
 import { type FormEvent, useState } from 'react'
 
 export default function Home() {
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState<Person>({
+        id: 1,
+        name: 'Home',
+        imageUrl:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    })
+
     function handleSubmit(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault()
         // get the form data
@@ -25,8 +32,20 @@ export default function Home() {
         const data: FormResponse = {
             name: name as string,
             money: money as string,
-            category: category,
+            category: category.name,
         }
+
+        fetch('http://localhost:8080/form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error('Error:', error))
+
         console.log(data)
     }
 

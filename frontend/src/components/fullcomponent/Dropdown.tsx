@@ -34,8 +34,8 @@ export default function Dropdown({
     category,
     setCategory,
 }: {
-    category: string
-    setCategory: (category: string) => void
+    category: Person
+    setCategory: (category: Person) => void
 }) {
     const [query, setQuery] = useState('')
 
