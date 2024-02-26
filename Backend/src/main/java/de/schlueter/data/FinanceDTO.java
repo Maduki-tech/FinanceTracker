@@ -19,7 +19,7 @@ public class FinanceDTO {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Integer id;
     private String name;
     private String description;
-    private long amount;
+    private String amount;
     private String currency;
     private Date date;
 }

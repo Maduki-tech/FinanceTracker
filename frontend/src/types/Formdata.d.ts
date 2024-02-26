@@ -1,6 +1,8 @@
 export type FormResponse = {
+    id?: int
     name: string
-    money: string
-    date?: string
-    category: string
+    description: string
+    amount: number
+    currency: string
+    date: Date
 }
